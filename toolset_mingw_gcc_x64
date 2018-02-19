@@ -1,8 +1,14 @@
 #!/bin/sh
-PREFIX=x86_64-w64-mingw32
+#set -x
+
+FOLDER_SUFFIX=mingw64
+TOOLSET=x86_64-w64-mingw32
+PREFIX=$TOOLSET
+
 export CC=$PREFIX-gcc
 export CXX=$PREFIX-g++
 export CPP=$PREFIX-cpp
 export RANLIB=$PREFIX-ranlib
 export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
-exec "$@"
+
+#exec "$@"
