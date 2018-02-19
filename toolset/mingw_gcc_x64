@@ -1,6 +1,6 @@
 #!/bin/sh
 #set -x
-. common
+. $( dirname "${BASH_SOURCE[0]}")/common
 
 PLATFORM=mingw
 COMPILER=gcc

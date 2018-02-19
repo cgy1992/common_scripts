@@ -24,5 +24,5 @@ function make_def_and_lib_from_dll
     fi
   done
 
-  lib.exe -MACHINE:${lib_arch} -DEF:"${libname}.def" -OUT:"${libname}" -NAME:"${dllname}"
+  lib.exe -MACHINE:${LIB_ARCH} -DEF:"${libname}.def" -OUT:"${libname}" -NAME:"${dllname}"
 }
