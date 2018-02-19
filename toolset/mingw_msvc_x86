@@ -1,0 +1,14 @@
+#!/bin/sh
+#set -x
+. common
+
+PLATFORM=mingw
+COMPILER=msvc
+LIB_ARCH=x86
+HOST_DEF=i686-w64-mingw32
+
+export CC='cl.exe'
+export PATH="/mnt/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin:$PATH"
+
+
+

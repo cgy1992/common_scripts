@@ -1,10 +1,13 @@
 #!/bin/sh
 #set -x
+. common
 
-FOLDER_SUFFIX=mingw64
-TOOLSET=x86_64-w64-mingw32
-PREFIX=$TOOLSET
+PLATFORM=mingw
+COMPILER=gcc
+LIB_ARCH=x64
+HOST_DEF=x86_64-w64-mingw32
 
+PREFIX=$HOST_DEF
 export CC=$PREFIX-gcc
 export CXX=$PREFIX-g++
 export CPP=$PREFIX-cpp

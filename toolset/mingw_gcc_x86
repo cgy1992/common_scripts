@@ -1,9 +1,11 @@
 #!/bin/sh
 #set -x
+. common
 
-FOLDER_SUFFIX=mingw32
-TOOLSET=i686-w64-mingw32
-PREFIX=$TOOLSET
+PLATFORM=mingw
+COMPILER=gcc
+LIB_ARCH=x86
+HOST_DEF=i686-w64-mingw32
 
 export CC=$PREFIX-gcc
 export CXX=$PREFIX-g++
