@@ -6,12 +6,13 @@ PLATFORM=mingw
 COMPILER=gcc
 LIB_ARCH=x64
 HOST_DEF=x86_64-w64-mingw32
+CROSS_PREFIX=${HOST_DEF}-
+CROSSBUILDTREE=/usr/$HOST_DEF
 
-PREFIX=$HOST_DEF
-export CC=$PREFIX-gcc
-export CXX=$PREFIX-g++
-export CPP=$PREFIX-cpp
-export RANLIB=$PREFIX-ranlib
-export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
+#export CC=$PREFIX-gcc
+#export CXX=$PREFIX-g++
+#export CPP=$PREFIX-cpp
+#export RANLIB=$PREFIX-ranlib
+#export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
 
 #exec "$@"
