@@ -7,6 +7,7 @@ COMPILER=gcc
 LIB_ARCH=x86
 HOST_DEF=i686-w64-mingw32
 
+PREFIX=$HOST_DEF
 export CC=$PREFIX-gcc
 export CXX=$PREFIX-g++
 export CPP=$PREFIX-cpp
