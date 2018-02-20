@@ -2,9 +2,10 @@
 #set -x
 . $( dirname "${BASH_SOURCE[0]}")/common
 
-PLATFORM=mingw
+PLATFORM=mingw32
 COMPILER=gcc
 LIB_ARCH=x86
+FULLARCH=x86_32
 HOST_DEF=i686-w64-mingw32
 CROSS_PREFIX=${HOST_DEF}-
 CROSSBUILDTREE=/usr/$HOST_DEF

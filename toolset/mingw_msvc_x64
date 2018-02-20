@@ -5,11 +5,14 @@
 PLATFORM=mingw
 COMPILER=msvc
 LIB_ARCH=x64
+FULLARCH=x86_64
 HOST_DEF=x86_64-w64-mingw32
 CROSS_PREFIX=
 CROSSBUILDTREE=/usr/$HOST_DEF
 
-export CC='cl.exe'
+#alias cl='cl.exe'
+#alias link='link.exe'
+#export CC='cl.exe'
 export PATH="/mnt/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/amd64:$PATH"
 
 

@@ -2,9 +2,10 @@
 #set -x
 . $( dirname "${BASH_SOURCE[0]}")/common
 
-PLATFORM=mingw
+PLATFORM=mingw32
 COMPILER=gcc
 LIB_ARCH=x64
+FULLARCH=x86_64
 HOST_DEF=x86_64-w64-mingw32
 CROSS_PREFIX=${HOST_DEF}-
 CROSSBUILDTREE=/usr/$HOST_DEF
@@ -14,5 +15,5 @@ CROSSBUILDTREE=/usr/$HOST_DEF
 #export CPP=$PREFIX-cpp
 #export RANLIB=$PREFIX-ranlib
 #export PATH="/usr/x86_64-w64-mingw32/bin:$PATH"
-
+export PATH="$TOOLSET_DIR/../:$PATH"
 #exec "$@"
