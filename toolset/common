@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+#set -x
 
 TOOLSET=`basename "$0"`
 TOOLSET_DIR=$( dirname "${BASH_SOURCE[0]}")
