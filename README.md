@@ -10,7 +10,9 @@ https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 ## Install on Ubuntu
 sudo apt install mingw-w64
+
 sudo apt install libz-mingw-w64-dev
+
 sudo apt install libconfig9
 
 #### may be you will need:
