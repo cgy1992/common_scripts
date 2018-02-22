@@ -9,16 +9,17 @@ https://github.com/GPUOpen-LibrariesAndSDKs/AMF
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 ## Install on Ubuntu
-sudo apt-get install mingw-w64
-
-sudo apt-get install libz-mingw-w64-dev
+sudo apt install mingw-w64
+sudo apt install libz-mingw-w64-dev
+sudo apt install libconfig9
 
 #### may be you will need:
-sudo apt-get install build-essential
+sudo apt install build-essential
 
-sudo apt-get install mingw-w64-tools
+sudo apt install mingw-w64-tools
 
-sudo apt-get install gdb-mingw-w64
+sudo apt install gdb-mingw-w64
 
-sudo apt-get install binutils-mingw-w64
+sudo apt install binutils-mingw-w64
 
+sudo apt install mercurial
