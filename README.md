@@ -21,6 +21,8 @@ sudo apt-get install make
 
 sudo apt install mc
 
+apt install pkg-config
+
 #### Install mingw:
 sudo apt-get install mingw-w64
 
