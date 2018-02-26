@@ -17,9 +17,20 @@ sudo apt install mc
 
 Install mingw:
 sudo apt-get install mingw-w64
+sudo apt-get install libz-mingw-w64-dev
+sudo apt-get install make
+
+Install build environment 
+sudo apt-get install build-essential
+
+Build & Install nasm:
+wget http://www.nasm.us/pub/nasm/releasebuilds/2.13.03/nasm-2.13.03.tar.xz
+tar -xvf nasm-2.13.03.tar.xz
+cd nasm-2.13.03/
+
 
 #### may be you will need:
-sudo apt-get install libz-mingw-w64-dev
+
 
 sudo apt install libconfig9
 
