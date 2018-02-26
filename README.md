@@ -14,7 +14,7 @@ https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y; apt-get autoclean -y'
 
-#### Install build environment & mc
+#### Install build environment & tools
 sudo apt-get install build-essential
 
 sudo apt-get install make
@@ -22,6 +22,8 @@ sudo apt-get install make
 sudo apt install mc
 
 apt install pkg-config
+
+sudo apt install texi2html
 
 #### Install mingw:
 sudo apt-get install mingw-w64
