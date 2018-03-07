@@ -17,3 +17,4 @@ CROSSBUILDTREE=/usr/$HOST_DEF
 #export RANLIB=$PREFIX-ranlib
 #export PATH="/usr/i686-w64-mingw32/bin:$PATH"
 #exec "$@"
+export PATH="/mnt/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin:$PATH"
