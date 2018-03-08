@@ -22,12 +22,15 @@ sudo apt-get install make
 sudo apt install mc
 
 apt install pkg-config
+
 apt install cmake
 
 sudo apt install texi2html
 
 #### Install mingw:
 sudo apt-get install mingw-w64
+
+sudo apt-get install binutils-mingw-w64
 
 sudo apt-get install libz-mingw-w64-dev
 
