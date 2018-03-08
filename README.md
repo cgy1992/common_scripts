@@ -22,6 +22,7 @@ sudo apt-get install make
 sudo apt install mc
 
 apt install pkg-config
+apt install cmake
 
 sudo apt install texi2html
 
