@@ -16,7 +16,7 @@ BUILD_GCC_FINAL=1
 BINUTILS_SRC=binutils-2.30
 MINGW_SRC=mingw-w64-v5.0.3
 GCC_SRC=gcc-5.5.0
-
+PROC_NUM=`nproc --all`
 
 
 PREFIX=/usr/mingw-w64
@@ -40,7 +40,7 @@ for ARCH in x86_64 i686; do
         rm -fR build-${ARCH}
         mkdir -p build-${ARCH} && cd build-${ARCH} || exit 1
         ../configure --target=${TARGET} --prefix=${ARCH_DIR} --disable-multilib ${SYSTROOT} || exit 1
-        make -j8 || exit 1
+        make -j${PROC_NUM} || exit 1
         sudo make install || exit 1
         cd ${ROOT_DIR}
 
@@ -69,7 +69,7 @@ for ARCH in x86_64 i686; do
         ln -s aclocal-1.15 aclocal-1.14
 
         ../configure --target=${TARGET} --prefix=${ARCH_DIR} --disable-multilib ${SYSTROOT} || exit 1
-        make all-gcc -j8 || exit 1
+        make all-gcc -j${PROC_NUM} || exit 1
         sudo make install-gcc || exit 1
         cd ${ROOT_DIR}
     fi
@@ -83,7 +83,7 @@ for ARCH in x86_64 i686; do
         TOOLS="CC=${TARGET}-gcc CXX=${TARGET}-g++ CPP=${TARGET}-cpp"
 
         ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG $TOOLS
-        make -j8 || exit 1
+        make -j${PROC_NUM} || exit 1
         sudo sh -c "export PATH=$PATH:${ARCH_DIR}/bin;env;make install" || exit 1
         cd ${ROOT_DIR}
     fi
@@ -91,7 +91,7 @@ for ARCH in x86_64 i686; do
     if [ "$BUILD_GCC_FINAL" == "1" ]; then
         cd ${GCC_SRC}/build-${ARCH} || exit 1
 
-        make -j8 || exit 1
+        make -j${PROC_NUM} || exit 1
         sudo make install || exit 1
         cd ${ROOT_DIR}
     fi
