@@ -8,8 +8,6 @@ LIB_ARCH=x86
 FULLARCH=x86_32
 HOST_DEF=i686-w64-mingw32
 CROSS_PREFIX=
-CROSSBUILDTREE=/usr/$HOST_DEF
 
-#export CC='cl.exe'
 export PATH="/mnt/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin:$PATH"
 

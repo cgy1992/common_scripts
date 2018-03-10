@@ -8,13 +8,6 @@ LIB_ARCH=x86
 FULLARCH=x86_32
 HOST_DEF=i686-w64-mingw32
 CROSS_PREFIX=${HOST_DEF}-
-CROSSBUILDTREE=/usr/$HOST_DEF
 
-#PREFIX=$HOST_DEF
-#export CC=$PREFIX-gcc
-#export CXX=$PREFIX-g++
-#export CPP=$PREFIX-cpp
-#export RANLIB=$PREFIX-ranlib
-#export PATH="/usr/i686-w64-mingw32/bin:$PATH"
-#exec "$@"
+export PATH="/usr/mingw-w64/bin:$PATH"
 export PATH="/mnt/c/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin:$PATH"
