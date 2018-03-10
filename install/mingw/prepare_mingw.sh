@@ -102,7 +102,8 @@ for ARCH in x86_64 i686; do
 
         ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG $TOOLS
         make -j${PROC_NUM} || exit 1
-        sudo sh -c "export PATH=$PATH:${ARCH_DIR}/bin;env;make install" || exit 1
+        EXEC_MI="sudo sh -c \'export PATH=$PATH:${ARCH_DIR}/bin;env;make install\' || exit 1"
+	$EXEC_MI
         cd ${WORK_DIR}
     fi
 
