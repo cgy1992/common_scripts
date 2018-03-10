@@ -84,7 +84,7 @@ for ARCH in x86_64 i686; do
 
         ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG $TOOLS
         make -j8 || exit 1
-        sudo make install || exit 1
+        sudo sh -c 'export PATH=$PATH:/usr/mingw-w64/toolchain-x86_64/bin;make install' || exit 1
         cd ${ROOT_DIR}
     fi
 
