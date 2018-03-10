@@ -2,6 +2,8 @@
 
 set -x
 
+sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-get autoremove -y; apt-get autoclean -y'
+
 sudo apt install -y flex texinfo bison
 sudo apt install -y build-essential
 #sudo apt install -y autoconf
