@@ -28,8 +28,8 @@ for ARCH in x86_64 i686; do
 
     ARCH_DIR=${PREFIX}/toolchain-${ARCH}
     TARGET=${ARCH}-w64-mingw32
-    xSYSTROOT="--with-sysroot=${ARCH_DIR}"
-    xSYSTROOTEX="--with-sysroot=${ARCH_DIR}/${TARGET}"
+    SYSTROOT="--with-sysroot=${ARCH_DIR}"
+    SYSTROOTEX="--with-sysroot=${ARCH_DIR}/${TARGET}"
     cd ${ROOT_DIR}
 
 
@@ -63,6 +63,9 @@ for ARCH in x86_64 i686; do
         cd ${GCC_SRC}
         rm -fR build-${ARCH}
         mkdir -p build-${ARCH} && cd build-${ARCH} || exit 1
+        ln -s automake-1.15 automake-1.14
+        ln -s aclocal-1.15 aclocal-1.14
+
         ../configure --target=${TARGET} --prefix=${ARCH_DIR} --disable-multilib ${SYSTROOT} || exit 1
         make all-gcc -j8 || exit 1
         sudo make install-gcc || exit 1
@@ -73,10 +76,10 @@ for ARCH in x86_64 i686; do
         cd ${MINGW_SRC}/mingw-w64-crt
         mkdir -p build-${ARCH} && cd build-${ARCH} || exit 1
 
-        [${ARCH} == "i686"] ADD_ARG="--enable-lib32 --disable-lib64"
-        [${ARCH} == "x86_64"] ADD_ARG="--disable-lib32 --enable-lib64"
+        [ "${ARCH}" == "i686" ] ADD_ARG="--enable-lib32 --disable-lib64"
+        [ "${ARCH}" == "x86_64" ] ADD_ARG="--disable-lib32 --enable-lib64"
 
-        ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOTEX} $ADD_ARG
+        ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG
         make -j8 || exit 1
         sudo make install || exit 1
         cd ${ROOT_DIR}

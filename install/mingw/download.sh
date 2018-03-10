@@ -4,7 +4,7 @@ set -x
 
 sudo apt install -y flex texinfo bison
 sudo apt install -y build-essential
-
+#sudo apt install -y autoconf
 
 ROOT_DIR=$PWD
 BINUTILS_SRC=binutils-2.30
