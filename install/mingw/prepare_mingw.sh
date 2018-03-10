@@ -3,9 +3,27 @@
 set -x
 
 ROOT_DIR=$PWD
-LOG_FILE=$PWD/log.text
+WORK_DIR=$ROOT_DIR/_build_nasm
+mkdir -p && cd ${WORK_DIR} || exit 1
+
+LOG_FILE=$WORK_DIR/log.txt
 echo 'time' > $LOG_FILE
 
+BINUTILS_SRC=binutils-2.30
+MINGW_SRC=mingw-w64-v5.0.3
+GCC_SRC=gcc-5.5.0
+
+rm -fR $BINUTILS_SRC
+rm -fR $MINGW_SRC
+rm -fR $GCC_SRC
+
+wget  --timestamping https://mirror.tochlab.net/pub/gnu/gcc/${GCC_SRC}/${GCC_SRC}.tar.xz
+wget  --timestamping https://mirror.tochlab.net/pub/gnu/binutils/${BINUTILS_SRC}.tar.xz
+wget  --timestamping https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/${MINGW_SRC}.tar.bz2/download -O ${MINGW_SRC}.tar.bz2
+
+tar -xvf ${GCC_SRC}.tar.xz
+tar -xvf ${BINUTILS_SRC}.tar.xz
+tar -xvf ${MINGW_SRC}.tar.bz2
 
 BUILD_BINUTIL=1
 BUILD_MINGW_HEADERS=1
@@ -30,7 +48,7 @@ for ARCH in x86_64 i686; do
     TARGET=${ARCH}-w64-mingw32
     SYSTROOT="--with-sysroot=${ARCH_DIR}"
     SYSTROOTEX="--with-sysroot=${ARCH_DIR}/${TARGET}"
-    cd ${ROOT_DIR}
+    cd ${WORK_DIR}
 
 
     #--enable-targets=${TARGET} 
@@ -42,7 +60,7 @@ for ARCH in x86_64 i686; do
         ../configure --target=${TARGET} --prefix=${ARCH_DIR} --disable-multilib ${SYSTROOT} || exit 1
         make -j${PROC_NUM} || exit 1
         sudo make install || exit 1
-        cd ${ROOT_DIR}
+        cd ${WORK_DIR}
 
         export PATH="$PATH:${ARCH_DIR}/bin"
     fi
@@ -57,7 +75,7 @@ for ARCH in x86_64 i686; do
         sudo make install || exit 1
         sudo ln -s ${ARCH_DIR}/${TARGET} ${ARCH_DIR}/mingw || exit 1
         sudo mkdir -p ${ARCH_DIR}/${TARGET}/lib || exit 1
-        cd ${ROOT_DIR}
+        cd ${WORK_DIR}
     fi
 
 
@@ -71,7 +89,7 @@ for ARCH in x86_64 i686; do
         ../configure --target=${TARGET} --prefix=${ARCH_DIR} --disable-multilib ${SYSTROOT} || exit 1
         make all-gcc -j${PROC_NUM} || exit 1
         sudo make install-gcc || exit 1
-        cd ${ROOT_DIR}
+        cd ${WORK_DIR}
     fi
 
     if [ "$BUILD_MINGW_CRT" == "1" ]; then
@@ -85,7 +103,7 @@ for ARCH in x86_64 i686; do
         ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG $TOOLS
         make -j${PROC_NUM} || exit 1
         sudo sh -c "export PATH=$PATH:${ARCH_DIR}/bin;env;make install" || exit 1
-        cd ${ROOT_DIR}
+        cd ${WORK_DIR}
     fi
 
     if [ "$BUILD_GCC_FINAL" == "1" ]; then
@@ -93,8 +111,11 @@ for ARCH in x86_64 i686; do
 
         make -j${PROC_NUM} || exit 1
         sudo make install || exit 1
-        cd ${ROOT_DIR}
+        cd ${WORK_DIR}
     fi
 
     echo end $ARCH `date` >> $LOG_FILE
 done
+
+cd ${ROOT_DIR}
+
