@@ -4,7 +4,7 @@ set -x
 
 ROOT_DIR=$PWD
 WORK_DIR=$ROOT_DIR/_build_nasm
-mkdir -p && cd ${WORK_DIR} || exit 1
+mkdir -p ${WORK_DIR} && cd ${WORK_DIR} || exit 1
 
 LOG_FILE=$WORK_DIR/log.txt
 echo 'time' > $LOG_FILE
