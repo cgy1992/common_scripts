@@ -6,6 +6,7 @@ sudo -- sh -c 'apt-get update; apt-get upgrade -y; apt-get dist-upgrade -y; apt-
 
 sudo apt install -y flex texinfo bison
 sudo apt install -y build-essential
+sudo apt install libmpc-dev
 #sudo apt install -y autoconf
 
 ROOT_DIR=$PWD
@@ -27,7 +28,7 @@ tar -xvf ${BINUTILS_SRC}.tar.xz
 tar -xvf ${MINGW_SRC}.tar.bz2
 
 cd ${GCC_SRC}
-./contrib/download_prerequisites 
+#./contrib/download_prerequisites 
 cd $ROOT_DIR
 
 
