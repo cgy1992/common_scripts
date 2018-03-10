@@ -6,3 +6,4 @@ TOOLSET=`basename "$0"`
 TOOLSET_DIR=$( dirname "${BASH_SOURCE[0]}")
 
 export PATH="$TOOLSET_DIR:$PATH"
+export NPROC=`nproc --all`
