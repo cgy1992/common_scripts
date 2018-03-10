@@ -43,6 +43,8 @@ for ARCH in x86_64 i686; do
         make -j8 || exit 1
         sudo make install || exit 1
         cd ${ROOT_DIR}
+
+        export PATH="$PATH:${ARCH_DIR}/bin"
     fi
 
 
@@ -76,10 +78,11 @@ for ARCH in x86_64 i686; do
         cd ${MINGW_SRC}/mingw-w64-crt
         mkdir -p build-${ARCH} && cd build-${ARCH} || exit 1
 
-        [ "${ARCH}" == "i686" ] ADD_ARG="--enable-lib32 --disable-lib64"
-        [ "${ARCH}" == "x86_64" ] ADD_ARG="--disable-lib32 --enable-lib64"
+        [ "${ARCH}" == "i686" ] && ADD_ARG="--enable-lib32 --disable-lib64"
+        [ "${ARCH}" == "x86_64" ] && ADD_ARG="--disable-lib32 --enable-lib64"
+        TOOLS="CC=${TARGET}-gcc CXX=${TARGET}-g++ CPP=${TARGET}-cpp"
 
-        ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG
+        ../configure --host=${TARGET} --prefix=${ARCH_DIR}/${TARGET} ${SYSTROOT} $ADD_ARG $TOOLS
         make -j8 || exit 1
         sudo make install || exit 1
         cd ${ROOT_DIR}
