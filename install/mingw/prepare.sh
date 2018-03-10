@@ -9,5 +9,5 @@ sudo apt install -y build-essential
 sudo apt install -y libmpc-dev
 sudo apt install -y pkg-config
 sudo apt install -y cmake
-
+sudo apt install -y mc
 
