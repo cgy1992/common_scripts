@@ -21,9 +21,9 @@ wget  --timestamping http://ftp.heikorichter.name/gnu/gcc/${GCC_SRC}/${GCC_SRC}.
 wget  --timestamping http://ftp.heikorichter.name/gnu/binutils/${BINUTILS_SRC}.tar.xz || exit 1
 wget  --timestamping --no-check-certificate https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/${MINGW_SRC}.tar.bz2/download -O ${MINGW_SRC}.tar.bz2 || exit 1
 
-tar -xvf ${GCC_SRC}.tar.xz
-tar -xvf ${BINUTILS_SRC}.tar.xz
-tar -xvf ${MINGW_SRC}.tar.bz2
+tar -xf ${GCC_SRC}.tar.xz
+tar -xf ${BINUTILS_SRC}.tar.xz
+tar -xf ${MINGW_SRC}.tar.bz2
 
 BUILD_BINUTIL=1
 BUILD_MINGW_HEADERS=1
