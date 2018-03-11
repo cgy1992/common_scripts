@@ -17,9 +17,9 @@ rm -fR $BINUTILS_SRC
 rm -fR $MINGW_SRC
 rm -fR $GCC_SRC
 
-wget  --timestamping https://mirror.tochlab.net/pub/gnu/gcc/${GCC_SRC}/${GCC_SRC}.tar.xz
-wget  --timestamping https://mirror.tochlab.net/pub/gnu/binutils/${BINUTILS_SRC}.tar.xz
-wget  --timestamping https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/${MINGW_SRC}.tar.bz2/download -O ${MINGW_SRC}.tar.bz2
+wget  --timestamping http://ftp.heikorichter.name/gnu/gcc/${GCC_SRC}/${GCC_SRC}.tar.xz || exit 1
+wget  --timestamping http://ftp.heikorichter.name/gnu/binutils/${BINUTILS_SRC}.tar.xz || exit 1
+wget  --timestamping --no-check-certificate https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/${MINGW_SRC}.tar.bz2/download -O ${MINGW_SRC}.tar.bz2 || exit 1
 
 tar -xvf ${GCC_SRC}.tar.xz
 tar -xvf ${BINUTILS_SRC}.tar.xz
